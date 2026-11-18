@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ataklti Tsegay Belay | Construction Technology & Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif; }
+        .lang-btn.active { background-color: #d97706; color: white; border-color: #d97706; }
+        [contenteditable="true"]:hover { outline: 2px dashed #d97706; cursor: text; background-color: rgba(245, 158, 11, 0.05); }
+        [contenteditable="true"]:focus { outline: 2px solid #d97706; background-color: white; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            [contenteditable="true"] { outline: none !important; background: transparent !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Admin / Edit Mode Floating Bar -->
+    <div class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white p-3 rounded-2xl shadow-2xl flex items-center gap-3 no-print border border-slate-700">
+        <span class="text-xs font-semibold px-2.5 py-1 bg-amber-600 rounded-lg flex items-center gap-1.5">
+            <i class="fas fa-edit"></i> Edit Mode: <span id="mode-status">Off</span>
+        </span>
+        <button onclick="toggleEditMode()" id="edit-toggle-btn" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-bold rounded-lg border border-slate-600 transition">
+            Enable Edit
+        </button>
+        <button onclick="downloadUpdatedCode()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-xs font-bold rounded-lg transition flex items-center gap-1">
+            <i class="fas fa-download"></i> Save & Download
+        </button>
+    </div>
+
+    <!-- Navigation & Language Switcher -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="flex items-center space-x-2">
+                    <div class="w-9 h-9 bg-amber-600 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow">
+                        AT
+                    </div>
+                    <span class="font-bold text-slate-900 text-lg tracking-tight" contenteditable="false" data-editable>Ataklti Tsegay</span>
+                </a>
+
+                <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+                    <a href="#about" class="hover:text-amber-600 transition">About</a>
+                    <a href="#skills" class="hover:text-amber-600 transition">Skills</a>
+                    <a href="#projects" class="hover:text-amber-600 transition">Projects</a>
+                    <a href="#education" class="hover:text-amber-600 transition">Education</a>
+                    <a href="#contact" class="hover:text-amber-600 transition">Contact</a>
+                </div>
+
+                <!-- Language Buttons -->
+                <div class="flex items-center space-x-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
+                    <button onclick="setLanguage('en')" id="btn-en" class="lang-btn active px-2.5 py-1 text-xs font-semibold rounded-md transition">EN</button>
+                    <button onclick="setLanguage('ti')" id="btn-ti" class="lang-btn px-2.5 py-1 text-xs font-semibold rounded-md text-slate-700 hover:bg-slate-200 transition">ትግርኛ</button>
+                    <button onclick="setLanguage('am')" id="btn-am" class="lang-btn px-2.5 py-1 text-xs font-semibold rounded-md text-slate-700 hover:bg-slate-200 transition">አማርኛ</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-slate-900 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 mb-6">
+                    <i class="fas fa-hard-hat mr-2"></i>
+                    <span contenteditable="false" data-editable>BSc in Construction Technology and Management</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight" contenteditable="false" data-editable>
+                    ATAKLTI TSEGAY BELAY
+                </h1>
+                <p class="text-xl sm:text-2xl text-amber-400 font-semibold mb-4" contenteditable="false" data-editable>
+                    Construction Management Graduate | Aspiring Construction Professional
+                </p>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6" contenteditable="false" data-editable>
+                    A motivated Construction Technology and Management graduate with an academic background in construction planning, project coordination, technical documentation and engineering fundamentals. Eager to apply my knowledge, develop practical experience and contribute to successful construction projects.
+                </p>
+                <p class="text-sm italic text-slate-400 border-l-4 border-amber-500 pl-4 mb-8" contenteditable="false" data-editable>
+                    "Building Knowledge. Managing Projects. Creating Sustainable Solutions."
+                </p>
+                <div class="flex flex-wrap gap-4 no-print">
+                    <a href="#contact" class="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-lg shadow-lg transition flex items-center">
+                        <i class="fas fa-envelope mr-2"></i> Contact Me
+                    </a>
+                    <button onclick="window.print()" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-lg border border-slate-600 transition flex items-center">
+                        <i class="fas fa-file-pdf mr-2 text-amber-400"></i> Download / Print CV
+                    </button>
+                    <a href="https://www.linkedin.com/in/ataklti-tsegay-75a151361" target="_blank" class="px-5 py-3 bg-blue-700 hover:bg-blue-600 text-white font-semibold rounded-lg transition flex items-center">
+                        <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="h-8 w-1.5 bg-amber-600 rounded-full"></div>
+                <h2 class="text-3xl font-bold text-slate-900">About Me</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                <div class="md:col-span-2 space-y-4 text-slate-600 leading-relaxed text-base sm:text-lg">
+                    <p contenteditable="false" data-editable>
+                        My name is Ataklti Tsegay Belay. I am a graduate with a Bachelor of Science degree in Construction Technology and Management from Poly Institute of Technology.
+                    </p>
+                    <p contenteditable="false" data-editable>
+                        I have an academic foundation in construction technology, construction management, project planning, technical documentation and engineering principles. I am passionate about the construction industry and interested in contributing to building and infrastructure development projects.
+                    </p>
+                    <p contenteditable="false" data-editable>
+                        As a fresh graduate, I am looking for an entry-level professional opportunity where I can apply my academic knowledge, gain practical experience, work with experienced professionals and continuously improve my technical and managerial skills. I am committed to professionalism, teamwork, responsibility and continuous learning.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
+                    <h3 class="font-bold text-slate-900 text-lg border-b pb-2">Quick Profile</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-amber-600 mt-1 w-5"></i>
+                            <div>
+                                <span class="font-semibold text-slate-700 block">Location</span>
+                                <span class="text-slate-600" contenteditable="false" data-editable>Mekelle, Tigray, Ethiopia</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-graduation-cap text-amber-600 mt-1 w-5"></i>
+                            <div>
+                                <span class="font-semibold text-slate-700 block">Degree</span>
+                                <span class="text-slate-600" contenteditable="false" data-editable>BSc in Construction Tech & Mgmt (2021)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-briefcase text-amber-600 mt-1 w-5"></i>
+                            <div>
+                                <span class="font-semibold text-slate-700 block">Availability</span>
+                                <span class="text-emerald-600 font-medium" contenteditable="false" data-editable>Open to Entry-Level Opportunities</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Skills & Software Section -->
+    <section id="skills" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-10">
+                <div class="flex items-center space-x-3">
+                    <div class="h-8 w-1.5 bg-amber-600 rounded-full"></div>
+                    <h2 class="text-3xl font-bold text-slate-900">Core Skills & Software Proficiency</h2>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-800 mb-5">Construction & Management Skills</h3>
+            <div id="skills-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-3">
+                        <i class="fas fa-calendar-check text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900" contenteditable="false" data-editable>Construction Planning</h4>
+                    <p class="text-sm text-slate-500 mt-1" contenteditable="false" data-editable>Work scheduling, sequencing, and resource planning</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-3">
+                        <i class="fas fa-tasks text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900" contenteditable="false" data-editable>Project Management</h4>
+                    <p class="text-sm text-slate-500 mt-1" contenteditable="false" data-editable>Project coordination, time & team management</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-3">
+                        <i class="fas fa-calculator text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900" contenteditable="false" data-editable>Quantity Estimation</h4>
+                    <p class="text-sm text-slate-500 mt-1" contenteditable="false" data-editable>Take-off sheets and Bill of Quantities (BOQ)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Projects Section -->
+    <section id="projects" class="py-16 md:py-24 bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="h-8 w-1.5 bg-amber-600 rounded-full"></div>
+                    <h2 class="text-3xl font-bold text-slate-900">Academic Projects</h2>
+                </div>
+                <button onclick="addNewProject()" class="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold rounded-lg shadow transition no-print flex items-center gap-2">
+                    <i class="fas fa-plus"></i> Add New Project
+                </button>
+            </div>
+            <p class="text-slate-600 mb-10 max-w-2xl">Practical coursework and university engineering projects completed during my BSc degree program.</p>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid md:grid-cols-2 gap-6">
+                <!-- Project 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 relative group">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full">01</span>
+                        <span class="text-xs font-medium text-slate-500" contenteditable="false" data-editable>AutoCAD</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2" contenteditable="false" data-editable>Building Design Project</h3>
+                    <p class="text-sm text-slate-600 mb-4" contenteditable="false" data-editable>
+                        Drafted complete architectural and structural working drawings including floor plans, elevations, sections, and foundation layouts.
+                    </p>
+                    <div class="text-xs text-slate-500 border-t pt-3 flex justify-between">
+                        <span><strong>Role:</strong> <span contenteditable="false" data-editable>Student Designer & Drafter</span></span>
+                        <span><strong>Software:</strong> <span contenteditable="false" data-editable>AutoCAD</span></span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 relative group">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full">02</span>
+                        <span class="text-xs font-medium text-slate-500" contenteditable="false" data-editable>MS Project & Excel</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2" contenteditable="false" data-editable>Construction Planning Project</h3>
+                    <p class="text-sm text-slate-600 mb-4" contenteditable="false" data-editable>
+                        Developed Work Breakdown Structures (WBS), activity sequencing, critical path schedules, and resource allocation plans for a multi-story building.
+                    </p>
+                    <div class="text-xs text-slate-500 border-t pt-3 flex justify-between">
+                        <span><strong>Role:</strong> <span contenteditable="false" data-editable>Project Planner</span></span>
+                        <span><strong>Software:</strong> <span contenteditable="false" data-editable>MS Project, Excel</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="h-8 w-1.5 bg-amber-500 rounded-full"></div>
+                <h2 class="text-3xl font-bold">Get In Touch</h2>
+            </div>
+            <p class="text-slate-400 mb-10 max-w-xl">Available for entry-level engineering, site supervision, office engineering, and project coordination opportunities.</p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="tel:+251914851186" class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-phone-alt text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">Phone</h3>
+                    <p class="text-slate-300 text-sm" contenteditable="false" data-editable>+251 914 851 186</p>
+                </a>
+
+                <a href="mailto:atakltitsegay727@gmail.com" class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">Email</h3>
+                    <p class="text-slate-300 text-sm break-all" contenteditable="false" data-editable>atakltitsegay727@gmail.com</p>
+                </a>
+            </div>
+            <div class="border-t border-slate-800 mt-16 pt-8 text-center text-sm text-slate-500">
+                <p>&copy; 2026 Ataklti Tsegay Belay. All Rights Reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Script for Editing & Adding -->
+    <script>
+        let isEditMode = false;
+
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const statusSpan = document.getElementById('mode-status');
+            const toggleBtn = document.getElementById('edit-toggle-btn');
+            const editableElements = document.querySelectorAll('[data-editable]');
+
+            if (isEditMode) {
+                statusSpan.textContent = "On";
+                statusSpan.classList.remove('bg-amber-600');
+                statusSpan.classList.add('bg-emerald-600');
+                toggleBtn.textContent = "Disable Edit";
+                toggleBtn.classList.add('bg-amber-600');
+
+                editableElements.forEach(el => {
+                    el.setAttribute('contenteditable', 'true');
+                });
+            } else {
+                statusSpan.textContent = "Off";
+                statusSpan.classList.remove('bg-emerald-600');
+                statusSpan.classList.add('bg-amber-600');
+                toggleBtn.textContent = "Enable Edit";
+                toggleBtn.classList.remove('bg-amber-600');
+
+                editableElements.forEach(el => {
+                    el.setAttribute('contenteditable', 'false');
+                });
+            }
+        }
+
+        function addNewProject() {
+            const grid = document.getElementById('projects-grid');
+            const count = grid.children.length + 1;
+            const newCard = document.createElement('div');
+            newCard.className = "bg-slate-50 p-6 rounded-2xl border border-slate-200 relative group";
+            newCard.innerHTML = `
+                <div class="flex justify-between items-start mb-3">
+                    <span class="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full">0${count}</span>
+                    <span class="text-xs font-medium text-slate-500" contenteditable="${isEditMode}" data-editable>New Software</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2" contenteditable="${isEditMode}" data-editable>New Project Title</h3>
+                <p class="text-sm text-slate-600 mb-4" contenteditable="${isEditMode}" data-editable>
+                    Write a brief description about this new project, its objectives, and outcomes.
+                </p>
+                <div class="text-xs text-slate-500 border-t pt-3 flex justify-between">
+                    <span><strong>Role:</strong> <span contenteditable="${isEditMode}" data-editable>Project Role</span></span>
+                    <span><strong>Software:</strong> <span contenteditable="${isEditMode}" data-editable>Tools Used</span></span>
+                </div>
+            `;
+            grid.appendChild(newCard);
+        }
+
+        function downloadUpdatedCode() {
+            const wasEditing = isEditMode;
+            if(isEditMode) toggleEditMode();
+
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            if(wasEditing) toggleEditMode();
+            alert("Your updated website code has been downloaded as 'index.html'!");
+        }
+    </script>
+</body>
+</html>
